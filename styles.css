@@ -532,12 +532,6 @@ footer hr {
 	#contact-map iframe {
 		min-height: 25vw;
 	}
-
-
-	/* Landing article - h2 bigger */
-	#landing-article h2 {
-		font-size: 2rem;
-	}
 }
 
 @media(min-width: 1200px) and (min-height: 650px) {
@@ -594,13 +588,14 @@ footer hr {
 	}
 
 
-	/* Footer - qualification caption letter spacing smaller */
+	/* Footer - qualification caption text and letter spacing smaller */
 	#qualifications-grid p {
+		font-size: 0.5rem;
 		letter-spacing: 0.05rem;
 	}
 }
 
-@media(max-width: 540px) {
+@media(max-width: 600px) {
 
 	/* Intro - vertically stacked, graphic size fixed */
 	#intro-container {
