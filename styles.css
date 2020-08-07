@@ -84,7 +84,7 @@ body {
  *   - .dropdown-menu is placed below with 100% top; it takes the full width
  *     of either the dropdown button or header.
  *   - .dropdown-menu uses max-height for the transition because height from
- *     0 to auto does not animate. Not ideal as 22rem max is hard coded, and
+ *     0 to auto does not animate. Not ideal as 23rem max is hard coded, and
  *     the transition timing is affected. Another way is to use scaleY, but
  *     this scales the text contents, and has a small issue where the width
  *     changes.
@@ -166,7 +166,7 @@ body {
 
 #main-header .dropdown-button:hover .dropdown-menu {
 	/*transform: scaleY(1);*/
-	max-height: 22rem;
+	max-height: 23rem;
 }
 
 #main-header .dropdown-menu a {
@@ -193,7 +193,7 @@ body {
 }
 
 #landing-article h2 {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-weight: normal;
 	margin: 0;
 	text-shadow: 0 0 4px black;
@@ -532,6 +532,18 @@ footer hr {
 	#contact-map iframe {
 		min-height: 25vw;
 	}
+
+
+	/* Landing article - h2 bigger */
+	#landing-article h2 {
+		font-size: 2rem;
+	}
+}
+
+@media(min-width: 1200px) and (min-height: 650px) {
+	:root {
+		font-size: 1.25rem;
+	}
 }
 
 
@@ -560,6 +572,15 @@ footer hr {
 		padding: 0.5rem 0.75rem;
 	}
 
+	/* Landing article - h2 smaller, p line-height smaller */
+	#landing-article h2 {
+		font-size: 1.5rem;
+	}
+
+	#landing-article p {
+		line-height: 1.5rem;
+	}
+
 
 	/* Services - h2 and grid centered on page*/
 	#services > .container {
@@ -570,6 +591,12 @@ footer hr {
 	/* Contact - h2 centered on page */
 	#contact h2 {
 		text-align: center;
+	}
+
+
+	/* Footer - qualification caption letter spacing smaller */
+	#qualifications-grid p {
+		letter-spacing: 0.05rem;
 	}
 }
 
