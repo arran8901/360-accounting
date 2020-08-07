@@ -544,28 +544,6 @@ footer hr {
 /* Small mobile screens */
 @media(max-width: 480px) {
 
-	/* Landing main header - navigation labels hidden, icons larger */
-	#main-header .hideable {
-		display: none;
-	}
-
-	#main-header nav img {
-		max-height: 1rem;
-		margin-left: 0;
-	}
-
-	/* Landing main header - dropdown menu full page width, says "services" */
-	#main-header .dropdown-button {
-		position: static;
-	}
-
-	#main-header .dropdown-menu::before {
-		display: block;
-		content: "Services";
-		color: black;
-		padding: 0.5rem 0.75rem;
-	}
-
 	/* Landing article - h2 smaller, p line-height smaller */
 	#landing-article h2 {
 		font-size: 1.5rem;
@@ -596,6 +574,28 @@ footer hr {
 }
 
 @media(max-width: 600px) {
+	
+	/* Landing main header - navigation labels hidden, icons larger */
+	#main-header .hideable {
+		display: none;
+	}
+
+	#main-header nav img {
+		max-height: 1rem;
+		margin-left: 0;
+	}
+
+	/* Landing main header - dropdown menu full page width, says "services" */
+	#main-header .dropdown-button {
+		position: static;
+	}
+
+	#main-header .dropdown-menu::before {
+		display: block;
+		content: "Services";
+		color: black;
+		padding: 0.5rem 0.75rem;
+	}
 
 	/* Intro - vertically stacked, graphic size fixed */
 	#intro-container {
