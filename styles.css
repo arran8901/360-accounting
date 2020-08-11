@@ -83,11 +83,10 @@ body {
  *     width.
  *   - .dropdown-menu is placed below with 100% top; it takes the full width
  *     of either the dropdown button or header.
- *   - .dropdown-menu uses max-height for the transition because height from
- *     0 to auto does not animate. Not ideal as 23rem max is hard coded, and
- *     the transition timing is affected. Another way is to use scaleY, but
- *     this scales the text contents, and has a small issue where the width
- *     changes.
+ *   - .dropdown-menu uses scaleY for the transition because height from
+ *     0 to auto does not animate. Another way is to use max-height, but
+ *     this requires a large max-height to be hard coded, which affects
+ *     transition timing.
  */
 #landing {
 	display: flex;
@@ -132,17 +131,27 @@ body {
 	transition: opacity var(--default-transition-duration);
 }
 
-#main-header .nav-item:hover > *:not(.dropdown-menu) {
+#main-header .nav-item:hover > *:not(.dropdown-menu),
+#main-header .show-dropdown > *:not(.dropdown-menu) {
 	opacity: 0.5;
 }
 
+#main-header .hide-when-small {
+	display: none;
+}
+
 #main-header nav img {
-	max-height: 0.8rem;
-	margin-left: 0.4rem;
+	max-height: 1rem;
+	margin-left: 0;
 }
 
 #main-header .dropdown-button {
-	position: relative;
+	position: static;
+}
+
+#main-header .dropdown-button > *:not(.dropdown-menu) {
+	/* The following means children will open dropdown menu */
+	pointer-events: none;
 }
 
 #main-header .dropdown-menu {
@@ -156,17 +165,26 @@ body {
 	margin: 0;
 	list-style-type: none;
 	box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.5);
-	/*transform: scaleY(0);
+	transform: scaleY(0);
 	transform-origin: top;
-	transition: transform 0.4s;*/
-	max-height: 0;
+	transition: transform 0.35s;
+	/*max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.4s;
+	transition: max-height 0.4s;*/
 }
 
-#main-header .dropdown-button:hover .dropdown-menu {
-	/*transform: scaleY(1);*/
-	max-height: 23rem;
+/*#main-header .dropdown-button:hover .dropdown-menu,*/
+#main-header .show-dropdown .dropdown-menu {
+	transform: scaleY(1);
+	/*max-height: 23rem;*/
+}
+
+#main-header .dropdown-menu h3 {
+	margin: 0;
+	color: black;
+	font-size: 0.75rem;
+	font-weight: normal;
+	padding: 0.75rem 0.75rem 0.25rem;
 }
 
 #main-header .dropdown-menu a {
@@ -183,6 +201,14 @@ body {
 
 #main-header .dropdown-menu a:hover {
 	background-color: #e2e2e2;
+}
+
+#main-header .dropdown-menu hr {
+	margin: 0.5rem 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 0.5px solid var(--theme-light-grey);
 }
 
 #landing-article {
@@ -511,11 +537,37 @@ footer hr {
 	letter-spacing: 0.1rem;
 	text-transform: uppercase;
 	margin: 0.5rem 0;
+	transition: opacity var(--default-transition-duration);
+}
+
+#footer-links nav a:hover {
+	opacity: 0.5;
 }
 
 
 /* Computer screens */
 @media(min-width: 900px) {
+
+	/* Landing main header - navigation labels shown, icons smaller,
+	   services dropdown menu width of button, headers removed, privacy
+	   is its own button*/
+	#main-header .hide-when-small {
+		display: inherit;
+	}
+
+	#main-header nav img {
+		max-height: 0.8rem;
+		margin-left: 0.4rem;
+	}
+
+	#main-header .dropdown-button {
+		position: relative;
+	}
+
+	#main-header .hide-when-large {
+		display: none;
+	}
+
 
 	/* Services - 4 column grid */
 	#services-grid {
@@ -574,28 +626,6 @@ footer hr {
 }
 
 @media(max-width: 600px) {
-	
-	/* Landing main header - navigation labels hidden, icons larger */
-	#main-header .hideable {
-		display: none;
-	}
-
-	#main-header nav img {
-		max-height: 1rem;
-		margin-left: 0;
-	}
-
-	/* Landing main header - dropdown menu full page width, says "services" */
-	#main-header .dropdown-button {
-		position: static;
-	}
-
-	#main-header .dropdown-menu::before {
-		display: block;
-		content: "Services";
-		color: black;
-		padding: 0.5rem 0.75rem;
-	}
 
 	/* Intro - vertically stacked, graphic size fixed */
 	#intro-container {
