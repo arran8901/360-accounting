@@ -1,0 +1,654 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&family=Work+Sans&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	/* Global variables */
+	--theme-blue: #0059b3;
+	--theme-light-blue: #0073e6;
+	--theme-white: #f6f6f6;
+	--theme-light-grey: #aaaaaa;
+	--default-transition-duration: 0.5s;
+	--primary-font-family: "Work Sans", sans-serif;
+	--secondary-font-family: Raleway, sans-serif;
+}
+
+body {
+	font-family: var(--primary-font-family);
+	margin: 0;
+	padding: 0;
+}
+
+.nobr {
+	white-space: nowrap;
+}
+
+/* Header/nav links and blue buttons */
+.link {
+	color: white;
+	text-decoration: none;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	font-family: var(--secondary-font-family);
+	letter-spacing: 0.1rem;
+}
+
+/* Blue buttons */
+.button-link {
+	background-color: var(--theme-blue);
+	padding: 0.6rem 1rem;
+	border-radius: 1rem;
+	transition: background-color var(--default-transition-duration);
+}
+
+.button-link:hover {
+	background-color: var(--theme-light-blue);
+}
+
+.container {
+	width: 80%;
+	/* auto margin horizontally centers container */
+	margin: auto;
+	padding: 2rem 0;
+}
+
+/* clockwise by default; for anti, set {animation-direction: reverse;} */
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+/* Landing
+ * Contains:
+ *   - Header with nav
+ *   - Landing text ("We handle...")
+ * Notes:
+ *   - #landing is a flexbox to center landing text vertically
+ *   - #main-header, nav are flexboxes that stretch children vertically; the
+ *     nav links are not as tall as the h1. This is to:
+ *       i)  Give nav links a larger clickable area
+ *       ii) Remove gap between "Services" and its dropdown menu
+ *   - .link elements are inline-flex to vertically center nav labels with
+ *     their icon.
+ *   - .nav-item elements' hover translucency has :not(.dropdown-menu) to not
+ *     make dropdown menus translucent
+ *   - .dropdown-button has relative position so that the .dropdown-menu child
+ *     (which has absolute position) renders relative to it. For small screens
+ *     it is set back to static, and the menu is positioned relative to the
+ *     #main-header (which has absolute position), thus filling the full page
+ *     width.
+ *   - .dropdown-menu is placed below with 100% top; it takes the full width
+ *     of either the dropdown button or header.
+ *   - .dropdown-menu uses scaleY for the transition because height from
+ *     0 to auto does not animate. Another way is to use max-height, but
+ *     this requires a large max-height to be hard coded, which affects
+ *     transition timing.
+ */
+#landing {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 90vh;
+	min-height: 30rem;
+	background-color: black;
+	background-image: url("images/landing_background.jpg");
+	background-size: cover;
+	background-position: center;
+	color: white;
+}
+
+#main-header {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+#main-header nav {
+	display: flex;
+	align-items: stretch;
+}
+
+#main-header .link {
+	display: inline-flex;
+	align-items: center;
+	padding: 1rem;
+}
+
+#main-header h1 {
+	font-size: 1rem;
+	font-weight: normal;
+	margin: 0;
+}
+
+#main-header .nav-item > *:not(.dropdown-menu) {
+	transition: opacity var(--default-transition-duration);
+}
+
+#main-header .nav-item:hover > *:not(.dropdown-menu),
+#main-header .show-dropdown > *:not(.dropdown-menu) {
+	opacity: 0.5;
+}
+
+#main-header .hide-when-small {
+	display: none;
+}
+
+#main-header nav img {
+	max-height: 1rem;
+	margin-left: 0;
+}
+
+#main-header .dropdown-button {
+	position: static;
+}
+
+#main-header .dropdown-button > *:not(.dropdown-menu) {
+	/* The following means children will open dropdown menu */
+	pointer-events: none;
+}
+
+#main-header .dropdown-menu {
+	background-color: var(--theme-white);
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.5);
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: transform 0.35s;
+	/*max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s;*/
+}
+
+/*#main-header .dropdown-button:hover .dropdown-menu,*/
+#main-header .show-dropdown .dropdown-menu {
+	transform: scaleY(1);
+	/*max-height: 23rem;*/
+}
+
+#main-header .dropdown-menu h3 {
+	margin: 0;
+	color: black;
+	font-size: 0.75rem;
+	font-weight: normal;
+	padding: 0.75rem 0.75rem 0.25rem;
+}
+
+#main-header .dropdown-menu a {
+	display: block;
+	color: black;
+	font-family: var(--primary-font-family);
+	font-size: 0.75rem;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: normal;
+	padding: 0.75rem;
+	transition: background-color var(--default-transition-duration);
+}
+
+#main-header .dropdown-menu a:hover {
+	background-color: #e2e2e2;
+}
+
+#main-header .dropdown-menu hr {
+	margin: 0.5rem 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 0.5px solid var(--theme-light-grey);
+}
+
+#landing-article {
+	margin-left: 10%;
+	width: 80%;
+	max-width: 32rem;
+	min-width: 16rem;
+}
+
+#landing-article h2 {
+	font-size: 1.8rem;
+	font-weight: normal;
+	margin: 0;
+	text-shadow: 0 0 4px black;
+}
+
+#landing-article p {
+	margin: 1rem 0;
+	line-height: 1.6rem;
+	text-shadow: 0 0 4px black;
+}
+
+#landing-article a {
+	display: inline-block;
+	margin-top: 0.5rem;
+	box-shadow: 0 0 50px #222222;
+}
+
+
+/*
+ * Intro
+ * Contains:
+ *   - #intro-graphic, animated logo
+ *   - #intro-text ("We take care of the paperwork...")
+ * Notes:
+ *   - #intro-container is a row flexbox that becomes column for small
+ *     screens.
+ *   - Logo is round arrow image and "360" h3 placed in the same grid cell.
+ *   - Space on left/right of logo equal due to 12.5% left margin on
+ *     #intro-text (12.5% of 80% = 10%).
+ *   - 2rem top space.
+ *   - 2rem space between graphic and text, when vertical.
+ *   - 3rem space below "Contact Us" button link.
+ */
+#intro {
+	background-color: var(--theme-white);
+}
+
+#intro-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#intro-graphic {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	grid-row-gap: 1.5rem;
+}
+
+#intro-graphic h3 {
+	grid-area: 1 / 1 / 2 / 2;
+	margin: 0;
+	color: var(--theme-blue);
+	font-size: 2.5vw;
+	font-weight: normal;
+}
+
+#intro-graphic h2 {
+	grid-area: 2 / 1 / 3 / 2;
+	margin: 0;
+	font-family: var(--secondary-font-family);
+	letter-spacing: 0.15rem;
+	font-size: 1.5vw;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#intro img {
+	grid-area: 1 / 1 / 2 / 2;
+	width: 10vw;
+	animation-name: rotate;
+	animation-duration: 40s;
+	animation-direction: reverse;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+#intro-text {
+	text-align: center;
+	margin-left: 12.5%;
+}
+
+#intro p {
+	text-align: left;
+	line-height: 1.6rem;
+	margin: 0;
+}
+
+#intro a {
+	display: inline-block;
+	margin: 1rem 0;
+	box-shadow: 7px 7px 10px #bbbbbb;
+}
+
+
+/*
+ * Services
+ * Contains:
+ *   - Services grid
+ * Notes:
+ *   - Each grid cell is a column flex with icon, label and arrow. It is
+ *     initially rougly centred by 2rem top padding. On hover, padding
+ *     (top rem, bottom rem) changes from (2, 0.5) to (1.5, 1.5) over a
+ *     transition, and the arrow becomes visible.
+ *   - 4rem top space.
+ *   - 4rem space between "Services" h2 and grid.
+ *   - 4rem space below grid.
+ */
+#services {
+	background-image: url("images/services_background.jpg");
+	background-size: cover;
+	background-position: 60% 50%;
+	color: white;
+}
+
+#services > .container {
+	padding: 4rem 0;
+}
+
+#services h2 {
+	margin: 0 0 4rem 0;
+	color: black;
+	font-weight: normal;
+}
+
+#services-grid {
+	display: inline-grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: center;
+	grid-gap: 1rem;
+}
+
+#services a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 2rem 0 0.5rem 0;
+	height: 9rem;
+	max-width: 9rem;
+	text-decoration: none;
+	background-color: var(--theme-white);
+	border-radius: 0.4rem;
+	box-shadow: 0 0 15px #cccccc;
+	transition: padding var(--default-transition-duration);
+}
+
+#services a:hover {
+	padding: 1.5rem 0;
+}
+
+.services-icon {
+	max-width: 2rem;
+}
+
+#services h3 {
+	margin: 0;
+	font-size: 0.8rem;
+	color: black;
+	font-weight: normal;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.07rem;
+}
+
+a .services-arrow {
+	width: 0.6rem;
+	visibility: hidden;
+}
+
+a:hover .services-arrow {
+	visibility: visible;
+}
+
+
+/* 
+ * Contact
+ * Contains:
+ *   - Contact modes (tel, mailto links and address)
+ *   - Google maps embedded iframe
+ * Notes:
+ *   - Each mode of contact is an inline-flex to vertically center the icon
+ *   - with the label and arrow, if present.
+ *   - 3rem top space.
+ *   - 1rem space between h2 and grid. When vertical, there is an additional
+ *     +2rem.
+ *   - 3rem space between address and map, when vertical.
+ *   - No space between modes and grid when horizontal, aside from any unused
+ *     space right of modes.
+ *   - 3rem bottom space.
+ */
+#contact {
+	background-color: var(--theme-white);
+}
+
+#contact > .container {
+	padding: 3rem 0;
+}
+
+#contact-content {
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
+	grid-row-gap: 1rem;
+}
+
+#contact h2 {
+	font-weight: normal;
+	margin: 0 0 1rem 0;
+}
+
+#contact-modes {
+	margin: 1rem 0;
+}
+
+#contact-modes a, #contact-modes div {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	margin: 1rem 0;
+}
+
+.contact-icon {
+	height: 1rem;
+}
+
+#contact-modes address {
+	font-size: 0.9rem;
+	font-style: normal;
+	margin: 0 1.25rem;
+	transition: margin var(--default-transition-duration);
+}
+
+#contact-modes a address {
+	color: var(--theme-light-blue);
+}
+
+#contact-modes a:hover address {
+	margin: 0 1.25rem 0 2rem;
+}
+
+.contact-arrow {
+	height: 0.6rem;
+}
+
+#contact-map iframe {
+	border: none;
+	width: 100%;
+	height: 100%;
+	min-height: 40vw;
+}
+
+
+/*
+ * Footer
+ * Contains:
+ *   - Qualifications grid
+ *   - Footer links / nav
+ * Notes:
+ *   - 2rem top space.
+ *   - 2rem space between qualifications grid and hr.
+ *   - 2rem space between hr and footer links.
+ *   - 2.5rem bottom space.
+ */
+footer {
+	background-color: #e8e8e8;
+	text-align: center;
+}
+
+#qualifications-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 0.75rem;
+	grid-row-gap: 0.25rem;
+	justify-items: center;
+	align-items: center;
+}
+
+#qualifications-grid img {
+	width: 20vw;
+	max-width: 5rem;
+}
+
+#qualifications-grid p {
+	margin: 0;
+	text-align: center;
+	font-family: var(--secondary-font-family);
+	font-weight: bold;
+	font-size: 0.6rem;
+	text-transform: uppercase;
+	letter-spacing: 0.07rem;
+}
+
+footer hr {
+	margin: 2rem 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 0.5px solid var(--theme-light-grey);
+}
+
+#footer-links h3 {
+	margin: 0 0 1rem 0;
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+#footer-links nav a {
+	display: block;
+	color: black;
+	font-family: var(--secondary-font-family);
+	font-size: 0.85rem;
+	text-decoration: none;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	margin: 0.5rem 0;
+	transition: opacity var(--default-transition-duration);
+}
+
+#footer-links nav a:hover {
+	opacity: 0.5;
+}
+
+
+/* Computer screens */
+@media(min-width: 900px) {
+
+	/* Landing main header - navigation labels shown, icons smaller,
+	   services dropdown menu width of button, headers removed, privacy
+	   is its own button*/
+	#main-header .hide-when-small {
+		display: inherit;
+	}
+
+	#main-header nav img {
+		max-height: 0.8rem;
+		margin-left: 0.4rem;
+	}
+
+	#main-header .dropdown-button {
+		position: relative;
+	}
+
+	#main-header .hide-when-large {
+		display: none;
+	}
+
+
+	/* Services - 4 column grid */
+	#services-grid {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-gap: 2vw;
+	}
+
+
+	/* Contact - right column with map, responsive map height */
+	#contact-content {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	#contact-map iframe {
+		min-height: 25vw;
+	}
+}
+
+@media(min-width: 1200px) and (min-height: 650px) {
+	:root {
+		font-size: 1.25rem;
+	}
+}
+
+
+/* Small mobile screens */
+@media(max-width: 480px) {
+
+	/* Landing article - h2 smaller, p line-height smaller */
+	#landing-article h2 {
+		font-size: 1.5rem;
+	}
+
+	#landing-article p {
+		line-height: 1.5rem;
+	}
+
+
+	/* Services - h2 and grid centered on page*/
+	#services > .container {
+		text-align: center;
+	}
+
+
+	/* Contact - h2 centered on page */
+	#contact h2 {
+		text-align: center;
+	}
+
+
+	/* Footer - qualification caption text and letter spacing smaller */
+	#qualifications-grid p {
+		font-size: 0.5rem;
+		letter-spacing: 0.05rem;
+	}
+}
+
+@media(max-width: 600px) {
+
+	/* Intro - vertically stacked, graphic size fixed */
+	#intro-container {
+		flex-direction: column;
+	}
+
+	#intro-graphic {
+		margin-bottom: 2rem;
+	}
+
+	#intro-text {
+		margin-left: 0;
+	}
+
+	#intro-graphic h3 {
+		font-size: 1rem;
+	}
+
+	#intro-graphic h2 {
+		font-size: 0.6rem;
+	}
+
+	#intro img {
+		width: 4rem;
+	}
+}
