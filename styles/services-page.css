@@ -33,8 +33,38 @@
 }
 
 
+/* Specific banners */
+#starting-a-business-banner {
+	background-image: url("../images/backgrounds/starting-a-business.jpg");
+}
+
 #accounting-banner {
 	background-image: url("../images/backgrounds/accounting.jpg");
+}
+
+#tax-banner {
+	background-image: url("../images/backgrounds/tax.png");
+}
+
+#corporate-secretarial-banner {
+	background-image: url("../images/backgrounds/corporate-secretarial.jpg");
+}
+
+#payroll-banner {
+	background-image: url("../images/backgrounds/payroll.jpg");
+}
+
+#business-consultancy-banner {
+	background-image: url("../images/backgrounds/business-consultancy.jpg");
+}
+
+#audit-banner {
+	background-image: url("../images/backgrounds/audit.jpg");
+}
+
+#de-registration-banner {
+	background-image: url("../images/backgrounds/de-registration.jpg");
+	background-position: 50% 100%;
 }
 
 
@@ -90,6 +120,12 @@
 	opacity: 1.0;
 }
 
+#information-text h2 {
+	margin-bottom: 0.5rem;
+	font-size: 1.3rem;
+	font-weight: normal;
+}
+
 #information-text p {
 	margin: 0;
 }
@@ -112,7 +148,7 @@
  *   - 3rem bottom space.
  */
 #contact {
-	padding: 2rem 0;
+	padding: 4rem 0 3rem 0;
 	display: flex;
 	justify-content: center;
 	background-image: linear-gradient(var(--theme-white) 50%, var(--theme-light-grey) 50%);
@@ -206,12 +242,6 @@
 
 @media(max-width: 480px) {
 
-	/* Information - more space between information and contact */
-	#information > .container {
-		padding-bottom: 2rem;
-	}
-
-
 	/* Contact - h2 centered on page */
 	#contact h2 {
 		text-align: center;
@@ -219,7 +249,7 @@
 
 	/* Contact - full page width */
 	#contact {
-		padding: 0;
+		padding: 3rem 0;
 	}
 
 	#contact-content {

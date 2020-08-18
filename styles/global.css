@@ -308,11 +308,6 @@ footer hr {
 /* Small mobile screens */
 @media(max-width: 480px) {
 
-	/* Footer - mode space between footer and contact */
-	footer > .container {
-		padding-top: 3rem;
-	}
-
 	/* Footer - qualification caption text and letter spacing smaller */
 	#qualifications-grid p {
 		font-size: 0.5rem;
