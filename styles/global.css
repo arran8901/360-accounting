@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&family=Work+Sans&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	/* Global variables */
+	--theme-blue: #0059b3;
+	--theme-light-blue: #0073e6;
+	--theme-white: #f7f7f7;
+	--theme-grey: #aaaaaa;
+	--theme-light-grey: #ececec;
+	--default-transition-duration: 0.5s;
+	--primary-font-family: "Work Sans", sans-serif;
+	--secondary-font-family: Raleway, sans-serif;
+}
+
+body {
+	font-family: var(--primary-font-family);
+	margin: 0;
+	padding: 0;
+}
+
+.nobr {
+	white-space: nowrap;
+}
+
+/* Header/nav links and blue buttons */
+.link {
+	color: white;
+	text-decoration: none;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	font-family: var(--secondary-font-family);
+	font-weight: 200;
+	letter-spacing: 0.1rem;
+}
+
+/* Blue buttons */
+.button-link {
+	background-color: var(--theme-blue);
+	padding: 0.6rem 1rem;
+	border-radius: 1rem;
+	transition: background-color var(--default-transition-duration);
+}
+
+.button-link:hover {
+	background-color: var(--theme-light-blue);
+}
+
+.container {
+	width: 80%;
+	height: 100%;
+	/* auto margin horizontally centers container */
+	margin: auto;
+	padding: 2rem 0;
+}
+
+/* clockwise by default; for anti, set {animation-direction: reverse;} */
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+/*
+ * Main header
+ * Contains:
+ *   - Company name
+ *   - nav menus
+ * Notes:
+ *   - #main-header, nav are flexboxes that stretch children vertically; the
+ *     nav links are not as tall as the h1. This is to:
+ *       i)  Give nav links a larger clickable area
+ *       ii) Remove gap between "Services" and its dropdown menu
+ *   - .link elements are inline-flex to vertically center nav labels with
+ *     their icon.
+ *   - .nav-item elements' hover translucency has :not(.dropdown-menu) to not
+ *     make dropdown menus translucent
+ *   - .dropdown-button has relative position so that the .dropdown-menu child
+ *     (which has absolute position) renders relative to it. For small screens
+ *     it is set back to static, and the menu is positioned relative to the
+ *     #main-header (which has absolute position), thus filling the full page
+ *     width.
+ *   - .dropdown-menu is placed below with 100% top; it takes the full width
+ *     of either the dropdown button or header.
+ *   - .dropdown-menu uses scaleY for the transition because height from
+ *     0 to auto does not animate. Another way is to use max-height, but
+ *     this requires a large max-height to be hard coded, which affects
+ *     transition timing.
+ */
+#main-header {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+#main-header nav {
+	display: flex;
+	align-items: stretch;
+}
+
+#main-header .link {
+	display: inline-flex;
+	align-items: center;
+	padding: 1rem;
+}
+
+#main-header h1 {
+	font-size: 1rem;
+	font-weight: 200;
+	margin: 0;
+}
+
+#main-header .nav-item > *:not(.dropdown-menu) {
+	transition: opacity var(--default-transition-duration);
+}
+
+#main-header .nav-item:hover > *:not(.dropdown-menu),
+#main-header .show-dropdown > *:not(.dropdown-menu) {
+	opacity: 0.5;
+}
+
+#main-header .hide-when-small {
+	display: none;
+}
+
+#main-header nav img {
+	max-height: 1rem;
+	margin-left: 0;
+}
+
+#main-header .dropdown-button {
+	position: static;
+}
+
+#main-header .dropdown-button > *:not(.dropdown-menu) {
+	/* The following means children will open dropdown menu */
+	pointer-events: none;
+}
+
+#main-header .dropdown-menu {
+	background-color: var(--theme-white);
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.5);
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: transform 0.35s;
+	/*max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s;*/
+}
+
+/*#main-header .dropdown-button:hover .dropdown-menu,*/
+#main-header .show-dropdown .dropdown-menu {
+	transform: scaleY(1);
+	/*max-height: 23rem;*/
+}
+
+#main-header .dropdown-menu h3 {
+	margin: 0;
+	color: black;
+	font-size: 0.75rem;
+	font-weight: normal;
+	padding: 0.75rem 0.75rem 0.25rem;
+}
+
+#main-header .dropdown-menu a {
+	display: block;
+	color: black;
+	font-family: var(--primary-font-family);
+	font-size: 0.75rem;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: normal;
+	padding: 0.75rem;
+	transition: background-color var(--default-transition-duration);
+}
+
+#main-header .dropdown-menu a:hover {
+	background-color: #e2e2e2;
+}
+
+#main-header .dropdown-menu hr {
+	margin: 0.5rem 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 0.5px solid var(--theme-grey);
+}
+
+
+/*
+ * Footer
+ * Contains:
+ *   - Qualifications grid
+ *   - Footer links / nav
+ * Notes:
+ *   - 2rem top space.
+ *   - 2rem space between qualifications grid and hr.
+ *   - 2rem space between hr and footer links.
+ *   - 2.5rem bottom space.
+ */
+footer {
+	background-color: var(--theme-light-grey);
+	text-align: center;
+}
+
+#qualifications-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 0.75rem;
+	grid-row-gap: 0.25rem;
+	justify-items: center;
+	align-items: center;
+}
+
+#qualifications-grid img {
+	width: 20vw;
+	max-width: 5rem;
+}
+
+#qualifications-grid p {
+	margin: 0;
+	text-align: center;
+	font-family: var(--secondary-font-family);
+	font-size: 0.6rem;
+	text-transform: uppercase;
+	letter-spacing: 0.07rem;
+}
+
+footer hr {
+	margin: 2rem 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 0.5px solid var(--theme-grey);
+}
+
+#footer-links h3 {
+	margin: 0 0 1rem 0;
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+#footer-links nav a {
+	display: block;
+	color: black;
+	font-family: var(--secondary-font-family);
+	font-weight: 200;
+	font-size: 0.85rem;
+	text-decoration: none;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	margin: 0.5rem 0;
+	transition: opacity var(--default-transition-duration);
+}
+
+#footer-links nav a:hover {
+	opacity: 0.5;
+}
+
+
+/* Computer screens */
+@media(min-width: 900px) {
+
+	/* Main header - navigation labels shown, icons smaller,
+	   services dropdown menu width of button, headers removed, privacy
+	   is its own button */
+	#main-header .hide-when-small {
+		display: inherit;
+	}
+
+	#main-header nav img {
+		max-height: 0.8rem;
+		margin-left: 0.4rem;
+	}
+
+	#main-header .dropdown-button {
+		position: relative;
+	}
+
+	#main-header .hide-when-large {
+		display: none;
+	}
+}
+
+@media(min-width: 1200px) and (min-height: 650px) {
+	:root {
+		font-size: 1.25rem;
+	}
+}
+
+
+/* Small mobile screens */
+@media(max-width: 480px) {
+
+	/* Footer - mode space between footer and contact */
+	footer > .container {
+		padding-top: 3rem;
+	}
+
+	/* Footer - qualification caption text and letter spacing smaller */
+	#qualifications-grid p {
+		font-size: 0.5rem;
+		letter-spacing: 0.05rem;
+	}
+}

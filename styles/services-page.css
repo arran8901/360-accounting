@@ -1,0 +1,230 @@
+
+/*
+ * Banner
+ * Contains:
+ *   - Main header
+ *   - h1
+ */
+#banner {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 75vh;
+	background-color: black;
+	background-image: url("../images/accounting3.jpg");
+	background-size: cover;
+	background-position: center;
+	color: white;
+}
+
+#banner > h1 {
+	margin: 0 0 0 10%;
+	width: 80%;
+	max-width: 32rem;
+	min-width: 16rem;
+	font-size: 1rem;
+	font-weight: normal;
+	text-shadow: 0 0 4px black;
+}
+
+#banner > h1 .large {
+	display: block;
+	font-size: 2rem;
+	margin-bottom: 0.25rem;
+}
+
+
+/*
+ * Information
+ */
+#information {
+	background-color: var(--theme-white);
+	line-height: 1.6rem;
+}
+
+#information > .container {
+	padding-bottom: 1rem;
+	display: flex;
+	align-items: flex-start;
+}
+
+#information .hide-when-small {
+	display: none;
+}
+
+#information-links {
+	margin-right: 12.5%;
+	/*border: 2px solid var(--theme-blue);*/
+	/*border-radius: 10px;*/
+}
+
+#information-links h3 {
+	margin: 1rem 0 1.5rem 0;
+	font-size: 1.25rem;
+	font-weight: normal;
+}
+
+#information-links img {
+	max-height: 1.5rem;
+	margin-right: 1rem;
+}
+
+#information-links a {
+	margin: 1.75rem 0;
+	display: flex;
+	align-items: center;
+	color: black;
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 0.65rem;
+	line-height: 1.2rem;
+	opacity: 0.5;
+	transition: opacity var(--default-transition-duration);
+}
+
+#information-links a.current, #information-links a:hover {
+	opacity: 1.0;
+}
+
+#information-text p {
+	margin: 0;
+}
+
+
+/* 
+ * Contact
+ * Contains:
+ *   - Contact modes (tel, mailto links and address)
+ *   - Google maps embedded iframe
+ * Notes:
+ *   - Each mode of contact is an inline-flex to vertically center the icon
+ *   - with the label and arrow, if present.
+ *   - 3rem top space.
+ *   - 1rem space between h2 and grid. When vertical, there is an additional
+ *     +2rem.
+ *   - 3rem space between address and map, when vertical.
+ *   - No space between modes and grid when horizontal, aside from any unused
+ *     space right of modes.
+ *   - 3rem bottom space.
+ */
+#contact {
+	padding: 4rem;
+	display: flex;
+	justify-content: center;
+	background-image: linear-gradient(var(--theme-white) 50%, var(--theme-light-grey) 50%);
+}
+
+#contact-content {
+	min-width: 70vw;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	/* overflow hidden so border radius is respected by children */
+	overflow: hidden;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+#contact-modes {
+	min-height: 16rem;
+	background-color: var(--theme-blue);
+}
+
+#contact-container {
+	height: 100%;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+#contact-container h2 {
+	color: white;
+	font-weight: normal;
+	margin: 0 0 1rem 0;
+}
+
+#contact-container a, #contact-container div {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: white;
+	padding: 0.5rem 0;
+}
+
+.contact-icon {
+	height: 1rem;
+}
+
+#contact-modes address {
+	font-size: 0.85rem;
+	font-style: normal;
+	margin-left: 1.25rem;
+	transition: opacity var(--default-transition-duration);
+}
+
+#contact-modes a:hover address {
+	opacity: 0.5;
+}
+
+#contact-map {
+	display: flex;
+}
+
+#contact-map iframe {
+	border: none;
+	width: 100%;
+	min-height: 16rem;
+}
+
+
+@media(min-width: 900px) {
+
+	/* Information - no links */
+	#information .hide-when-small {
+		display: block;
+	}
+
+
+	/* Contact - horizontally split */
+	#contact-content {
+		min-width: unset;
+		flex-direction: row;
+	}
+
+	#contact-map iframe {
+		/*width: 40vw;
+		height: 35vw;*/
+		width: 24rem;
+		height: 24rem;
+	}
+}
+
+@media(max-width: 480px) {
+
+	/* Information - more space between information and contact */
+	#information > .container {
+		padding-bottom: 2rem;
+	}
+
+
+	/* Contact - h2 centered on page */
+	#contact h2 {
+		text-align: center;
+	}
+
+	/* Contact - full page width */
+	#contact {
+		padding: 0;
+	}
+
+	#contact-content {
+		width: 100%;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	#contact-map iframe {
+		width: 100%;
+	}
+}
