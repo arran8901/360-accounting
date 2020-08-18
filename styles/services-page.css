@@ -5,19 +5,18 @@
  *   - Main header
  *   - h1
  */
-#banner {
+.banner {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	height: 75vh;
 	background-color: black;
-	background-image: url("../images/accounting3.jpg");
 	background-size: cover;
 	background-position: center;
 	color: white;
 }
 
-#banner > h1 {
+.banner > h1 {
 	margin: 0 0 0 10%;
 	width: 80%;
 	max-width: 32rem;
@@ -27,10 +26,15 @@
 	text-shadow: 0 0 4px black;
 }
 
-#banner > h1 .large {
+.banner > h1 .large {
 	display: block;
 	font-size: 2rem;
 	margin-bottom: 0.25rem;
+}
+
+
+#accounting-banner {
+	background-image: url("../images/backgrounds/accounting.jpg");
 }
 
 
@@ -108,7 +112,7 @@
  *   - 3rem bottom space.
  */
 #contact {
-	padding: 4rem;
+	padding: 2rem 0;
 	display: flex;
 	justify-content: center;
 	background-image: linear-gradient(var(--theme-white) 50%, var(--theme-light-grey) 50%);
@@ -224,7 +228,7 @@
 		box-shadow: none;
 	}
 
-	#contact-map iframe {
-		width: 100%;
+	#contact-modes, #contact-map iframe {
+		min-height: 18rem;
 	}
 }

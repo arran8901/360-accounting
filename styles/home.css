@@ -14,7 +14,7 @@
 	height: 90vh;
 	min-height: 30rem;
 	background-color: black;
-	background-image: url("../images/landing_background.jpg");
+	background-image: url("../images/backgrounds/homepage-landing.jpg");
 	background-size: cover;
 	background-position: center;
 	color: white;
@@ -140,7 +140,7 @@
  *   - 4rem space below grid.
  */
 #services {
-	background-image: url("../images/services_background.jpg");
+	background-image: url("../images/backgrounds/homepage-services.jpg");
 	background-size: cover;
 	background-position: 60% 50%;
 }
@@ -222,9 +222,6 @@ a:hover .services-arrow {
  */
 #contact {
 	background-color: var(--theme-white);
-	/*background-image: url("../images/contact_background.png");
-	background-size: cover;
-	background-position: center;*/
 }
 
 #contact > .container {
