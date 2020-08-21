@@ -1,10 +1,7 @@
-
 /*
- * Banner
- * Contains:
- *   - Main header
- *   - h1
+ * Styles for all 8 services pages (services/*.html)
  */
+
 .banner {
 	display: flex;
 	flex-direction: column;
@@ -68,16 +65,13 @@
 }
 
 
-/*
- * Information
- */
 #information {
 	background-color: var(--theme-white);
 	line-height: 1.6rem;
 }
 
 #information > .container {
-	padding-bottom: 1rem;
+	padding: 2.5rem 0 1rem 0;
 	display: flex;
 	align-items: flex-start;
 }
@@ -93,7 +87,7 @@
 }
 
 #information-links h3 {
-	margin: 1rem 0 1.5rem 0;
+	margin: 0.5rem 0 1.5rem 0;
 	font-size: 1.25rem;
 	font-weight: normal;
 }
@@ -131,22 +125,6 @@
 }
 
 
-/* 
- * Contact
- * Contains:
- *   - Contact modes (tel, mailto links and address)
- *   - Google maps embedded iframe
- * Notes:
- *   - Each mode of contact is an inline-flex to vertically center the icon
- *   - with the label and arrow, if present.
- *   - 3rem top space.
- *   - 1rem space between h2 and grid. When vertical, there is an additional
- *     +2rem.
- *   - 3rem space between address and map, when vertical.
- *   - No space between modes and grid when horizontal, aside from any unused
- *     space right of modes.
- *   - 3rem bottom space.
- */
 #contact {
 	padding: 4rem 0 3rem 0;
 	display: flex;
@@ -165,12 +143,11 @@
 }
 
 #contact-modes {
-	min-height: 16rem;
 	background-color: var(--theme-blue);
 }
 
 #contact-container {
-	height: 100%;
+	min-height: 16rem;
 	padding: 2rem;
 	display: flex;
 	flex-direction: column;

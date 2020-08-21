@@ -65,32 +65,10 @@ body {
 }
 
 
-/*
- * Main header
- * Contains:
- *   - Company name
- *   - nav menus
- * Notes:
- *   - #main-header, nav are flexboxes that stretch children vertically; the
- *     nav links are not as tall as the h1. This is to:
- *       i)  Give nav links a larger clickable area
- *       ii) Remove gap between "Services" and its dropdown menu
- *   - .link elements are inline-flex to vertically center nav labels with
- *     their icon.
- *   - .nav-item elements' hover translucency has :not(.dropdown-menu) to not
- *     make dropdown menus translucent
- *   - .dropdown-button has relative position so that the .dropdown-menu child
- *     (which has absolute position) renders relative to it. For small screens
- *     it is set back to static, and the menu is positioned relative to the
- *     #main-header (which has absolute position), thus filling the full page
- *     width.
- *   - .dropdown-menu is placed below with 100% top; it takes the full width
- *     of either the dropdown button or header.
- *   - .dropdown-menu uses scaleY for the transition because height from
- *     0 to auto does not animate. Another way is to use max-height, but
- *     this requires a large max-height to be hard coded, which affects
- *     transition timing.
- */
+/* #main-header, nav are flexboxes that stretch children vertically; the
+   nav links are not as tall as the h1. This is to:
+     i)  Give nav links a larger clickable area
+     ii) Remove gap between "Services" and its dropdown menu */
 #main-header {
 	width: 100%;
 	position: absolute;
@@ -106,6 +84,7 @@ body {
 }
 
 #main-header .link {
+	/* Vertically center labels with icons */
 	display: inline-flex;
 	align-items: center;
 	padding: 1rem;
@@ -121,6 +100,7 @@ body {
 	transition: opacity var(--default-transition-duration);
 }
 
+/* Translucent label and icon, but not dropdown-menu */
 #main-header .nav-item:hover > *:not(.dropdown-menu),
 #main-header .show-dropdown > *:not(.dropdown-menu) {
 	opacity: 0.5;
@@ -135,10 +115,6 @@ body {
 	margin-left: 0;
 }
 
-#main-header .dropdown-button {
-	position: static;
-}
-
 #main-header .dropdown-button > *:not(.dropdown-menu) {
 	/* The following means children will open dropdown menu */
 	pointer-events: none;
@@ -147,6 +123,7 @@ body {
 #main-header .dropdown-menu {
 	display: block;
 	position: absolute;
+	/* Overlap everything */
 	z-index: 1;
 	background-color: var(--theme-white);
 	left: 0;
@@ -166,6 +143,10 @@ body {
 
 /*#main-header .dropdown-button:hover .dropdown-menu,*/
 #main-header .show-dropdown .dropdown-menu {
+	/* .dropdown-menu uses scaleY for the transition because height from
+       0 to auto does not animate. Another way is to use max-height, but
+       this requires a large max-height to be hard coded, which affects
+       transition timing. */
 	transform: scaleY(1);
 	/*max-height: 23rem;*/
 }
@@ -203,17 +184,6 @@ body {
 }
 
 
-/*
- * Footer
- * Contains:
- *   - Qualifications grid
- *   - Footer links / nav
- * Notes:
- *   - 2rem top space.
- *   - 2rem space between qualifications grid and hr.
- *   - 2rem space between hr and footer links.
- *   - 2.5rem bottom space.
- */
 footer {
 	background-color: var(--theme-light-grey);
 	text-align: center;
@@ -274,7 +244,6 @@ footer hr {
 }
 
 
-/* Computer screens */
 @media(min-width: 900px) {
 
 	/* Main header - navigation labels shown, icons smaller,
@@ -290,6 +259,7 @@ footer hr {
 	}
 
 	#main-header .dropdown-button {
+		/* dropdown-menu will position relative to this */
 		position: relative;
 	}
 
@@ -304,8 +274,6 @@ footer hr {
 	}
 }
 
-
-/* Small mobile screens */
 @media(max-width: 480px) {
 
 	/* Footer - qualification caption text and letter spacing smaller */

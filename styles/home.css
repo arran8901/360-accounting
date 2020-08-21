@@ -1,13 +1,9 @@
-
 /*
- * Landing
- * Contains:
- *   - Main header
- *   - Landing article ("We handle...")
- * Notes:
- *   - #landing is a flexbox to center the landing article vertically
+ * Styles for homepage (index.html)
  */
+
 #landing {
+	/* flexbox, center justified, to vertically center the landing article */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -47,26 +43,12 @@
 }
 
 
-/*
- * Intro
- * Contains:
- *   - #intro-graphic, animated logo
- *   - #intro-text ("We take care of the paperwork...")
- * Notes:
- *   - #intro-container is a row flexbox that becomes column for small
- *     screens.
- *   - Logo is round arrow image and "360" h3 placed in the same grid cell.
- *   - Space on left/right of logo equal due to 12.5% left margin on
- *     #intro-text (12.5% of 80% = 10%).
- *   - 2rem top space.
- *   - 2rem space between graphic and text, when vertical.
- *   - 3rem space below "Contact Us" button link.
- */
 #intro {
 	background-color: var(--theme-white);
 }
 
 #intro-container {
+	/* row flexbox, becomes column for screens < 600px wide */
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -79,7 +61,9 @@
 	grid-row-gap: 1.5rem;
 }
 
+/* The "360" in the logo */
 #intro-graphic h3 {
+	/* Same grid cell as the img so they overlap */
 	grid-area: 1 / 1 / 2 / 2;
 	margin: 0;
 	color: var(--theme-blue);
@@ -87,6 +71,7 @@
 	font-weight: normal;
 }
 
+/* The text below the logo */
 #intro-graphic h2 {
 	grid-area: 2 / 1 / 3 / 2;
 	margin: 0;
@@ -99,6 +84,7 @@
 }
 
 #intro img {
+	/* Same grid cell as the h3 so they overlap */
 	grid-area: 1 / 1 / 2 / 2;
 	width: 10vw;
 	animation-name: rotate;
@@ -110,6 +96,7 @@
 
 #intro-text {
 	text-align: center;
+	/* 12.5% of 80% = 10% of screen, same as side margins of container */
 	margin-left: 12.5%;
 }
 
@@ -126,19 +113,6 @@
 }
 
 
-/*
- * Services
- * Contains:
- *   - Services grid
- * Notes:
- *   - Each grid cell is a column flex with icon, label and arrow. It is
- *     initially rougly centred by 2rem top padding. On hover, padding
- *     (top rem, bottom rem) changes from (2, 0.5) to (1.5, 1.5) over a
- *     transition, and the arrow becomes visible.
- *   - 4rem top space.
- *   - 4rem space between "Services" h2 and grid.
- *   - 4rem space below grid.
- */
 #services {
 	background-image: url("../images/backgrounds/homepage-services.jpg");
 	background-size: cover;
@@ -161,6 +135,7 @@
 	grid-gap: 1rem;
 }
 
+/* The grid cells */
 #services a {
 	display: flex;
 	flex-direction: column;
@@ -177,6 +152,7 @@
 }
 
 #services a:hover {
+	/* (top rem, bottom rem) Padding changes from (2, 0.5) to (1.5, 1.5) */
 	padding: 1.5rem 0;
 }
 
@@ -204,22 +180,6 @@ a:hover .services-arrow {
 }
 
 
-/* 
- * Contact
- * Contains:
- *   - Contact modes (tel, mailto links and address)
- *   - Google maps embedded iframe
- * Notes:
- *   - Each mode of contact is an inline-flex to vertically center the icon
- *   - with the label and arrow, if present.
- *   - 3rem top space.
- *   - 1rem space between h2 and grid. When vertical, there is an additional
- *     +2rem.
- *   - 3rem space between address and map, when vertical.
- *   - No space between modes and grid when horizontal, aside from any unused
- *     space right of modes.
- *   - 3rem bottom space.
- */
 #contact {
 	background-color: var(--theme-white);
 }
@@ -245,6 +205,7 @@ a:hover .services-arrow {
 }
 
 #contact-modes a, #contact-modes > div {
+	/* center-aligned inline-flex to center icon and arrow with text */
 	display: inline-flex;
 	align-items: center;
 	text-decoration: none;
@@ -299,7 +260,6 @@ a:hover .services-arrow {
 }
 
 
-/* Computer screens */
 @media(min-width: 900px) {
 
 	/* Services - 4 column grid */
@@ -319,8 +279,6 @@ a:hover .services-arrow {
 	}
 }
 
-
-/* Small mobile screens */
 @media(max-width: 480px) {
 
 	/* Landing article - h2 smaller, p line-height smaller */
