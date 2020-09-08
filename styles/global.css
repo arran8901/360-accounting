@@ -242,11 +242,10 @@ footer {
 }
 
 footer hr {
-	margin: 1.75rem 0;
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: 0.5px solid var(--theme-grey);
+	margin: 2rem 0;
+	height: 0.5px;
+	background-color: var(--theme-grey);
+	border: none;
 }
 
 #footer-links h3 {
