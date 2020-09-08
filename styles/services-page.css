@@ -2,22 +2,7 @@
  * Styles for all 8 services pages (services/*.html)
  */
 
-.banner {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 75vh;
-	background-color: black;
-	background-size: cover;
-	background-position: center;
-	color: white;
-}
-
 .banner > h1 {
-	margin: 0 0 0 10%;
-	width: 80%;
-	max-width: 32rem;
-	min-width: 16rem;
 	font-size: 1rem;
 	font-weight: normal;
 	text-shadow: 0 0 4px black;

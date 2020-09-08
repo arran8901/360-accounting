@@ -49,6 +49,14 @@ body {
 	background-color: var(--theme-light-blue);
 }
 
+.lower-alpha-ol {
+	list-style-type: lower-alpha;
+}
+
+.lower-roman-ol {
+	list-style-type: lower-roman;
+}
+
 .container {
 	width: 80%;
 	height: 100%;
@@ -62,6 +70,27 @@ body {
 	100% {
 		transform: rotate(360deg);
 	}
+}
+
+
+.banner {
+	/* flexbox, center justified, to vertically center the landing article */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 75vh;
+	background-color: black;
+	background-size: cover;
+	background-position: center;
+	color: white;
+}
+
+.banner #main-header + * {
+	margin: 0 0 0 10%;
+	width: 80%;
+	max-width: 32rem;
+	min-width: 16rem;
+	text-shadow: 0 0 4px black;
 }
 
 
@@ -213,7 +242,7 @@ footer {
 }
 
 footer hr {
-	margin: 2rem 0;
+	margin: 1.75rem 0;
 	border-top: none;
 	border-left: none;
 	border-right: none;

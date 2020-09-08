@@ -1,0 +1,45 @@
+/*
+ * Styles for privacy policy page (privacy.html)
+ */
+
+#privacy-banner {
+	background-image: url('../images/backgrounds/privacy.jpg');
+}
+
+#privacy-banner > h1 {
+	display: block;
+	font-size: 2rem;
+	font-weight: normal;
+	margin-bottom: 0.25rem;
+}
+
+
+#privacy-text {
+	line-height: 1.6rem;
+}
+
+#privacy-text > .container {
+	padding-bottom: 3.5rem;
+}
+
+#privacy-text h2 {
+	margin: 1rem 0;
+	font-family: var(--secondary-font-family);
+	font-weight: 200;
+	font-size: 1.3rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+}
+
+#privacy-text p {
+	margin: 0;
+}
+
+#privacy-text ol {
+	margin-bottom: 0;
+}
+
+#privacy-text ol li {
+	margin-top: 0.5rem;
+	padding-left: 1rem;
+}

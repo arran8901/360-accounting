@@ -2,38 +2,21 @@
  * Styles for homepage (index.html)
  */
 
-#landing {
-	/* flexbox, center justified, to vertically center the landing article */
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+#home-banner {
 	height: 90vh;
 	min-height: 30rem;
-	background-color: black;
 	background-image: url("../images/backgrounds/homepage-landing.jpg");
-	background-size: cover;
-	background-position: center;
-	color: white;
-}
-
-#landing-article {
-	margin-left: 10%;
-	width: 80%;
-	max-width: 32rem;
-	min-width: 16rem;
 }
 
 #landing-article h2 {
 	font-size: 1.8rem;
 	font-weight: normal;
 	margin: 0;
-	text-shadow: 0 0 4px black;
 }
 
 #landing-article p {
 	margin: 1rem 0;
 	line-height: 1.6rem;
-	text-shadow: 0 0 4px black;
 }
 
 #landing-article a {
