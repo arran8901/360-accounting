@@ -21,11 +21,12 @@
 }
 
 #accounting-banner {
-	background-image: url("../images/backgrounds/accounting.jpg");
+	background-image: url("../images/backgrounds/accounting2.jpg");
 }
 
 #tax-banner {
-	background-image: url("../images/backgrounds/tax.png");
+	background-image: url("../images/backgrounds/tax.jpg");
+	background-position: 50% 75%;
 }
 
 #corporate-secretarial-banner {
