@@ -25,8 +25,9 @@
 }
 
 #tax-banner {
-	background-image: url("../images/backgrounds/tax.jpg");
-	background-position: 50% 75%;
+	/* background-image: url("../images/backgrounds/tax.jpg"); */
+	/* background-position: 50% 75%; */
+	background-image: url("../images/backgrounds/payroll.jpg");
 }
 
 #corporate-secretarial-banner {
